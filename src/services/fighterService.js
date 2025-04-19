@@ -9,9 +9,54 @@ const index = async () => {
     }
   };
 
+  const create = async (formData) => {
+    try {
+        const res = await fetch(BASE_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+
+        return res.json()
+    } catch (err) {
+        console.log(err);
+        
+    }
+  }
+
+  const update = async (formData, fighterId) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${fighterId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+        return res.json();
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    const deleteFighter = async (fighterId) => {
+        try {
+          const res = await fetch(`${BASE_URL}/${fighterId}`, {
+            method: 'DELETE',
+          });
+          return res.json();
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
 //   console.log(await index());
   
   export {
     index,
+    create,
+    update,
   };
   

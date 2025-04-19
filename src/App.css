@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+
+.fight-img {
+  width: 100px; 
+  float: right;
+  margin: 10px;
+}
