@@ -8,6 +8,8 @@ const index = async () => {
       console.log(err);
     }
   };
+
+//   console.log(await index());
   
   export {
     index,
