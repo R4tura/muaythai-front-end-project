@@ -58,5 +58,6 @@ const index = async () => {
     index,
     create,
     update,
+    deleteFighter,
   };
   

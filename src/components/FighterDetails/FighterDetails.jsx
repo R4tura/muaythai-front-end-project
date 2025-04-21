@@ -7,8 +7,10 @@ const FighterDetail = (props) => {
       );
     }
   
-    // return statement if props.selected has a truthy value
+    console.log(props.selected);
+    
     return (
+      
       <div>
         <h1>{props.selected.name}</h1>
         <h2>
@@ -19,7 +21,7 @@ const FighterDetail = (props) => {
             Weight: {props.selected.weight} kg
         </h2>
 
-        <button onClick={props.handleFormView(props.selected)}>
+        <button onClick={() => props.handleFormView(props.selected)}>
             Edit Fighter
         </button>
 

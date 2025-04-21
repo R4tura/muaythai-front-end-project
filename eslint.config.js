@@ -22,14 +22,16 @@ export default [
     },
     rules: {
       ...js.configs.recommended.rules,
+      ...react.configs.recommended.rules,
+      ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'react/jsx-no-target-blank': 'off',
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
-      'react/prop-types': 'off',
-      'react/no-unescaped-entities': 'off', 
+      'react/prop-types': 'off', // add this line
+      'react/no-unescaped-entities': 'off', // add this line
     },
   },
 ]

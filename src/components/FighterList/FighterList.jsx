@@ -7,7 +7,7 @@ const FighterList = (props) => {
     return (
       <div>
         <h1>Fighter List</h1>
-        <img src="https://cdn.onefc.com/wp-content/uploads/2023/09/Superlek-Kiatmoo9-Rodtang-Jitmuangnon-ONE-Friday-Fights-34-82-1200x800.jpg" alt="Muay thai fight" className="fight-img" />
+        
         <div>
             {!props.fighters.length ? (
                 <h2>No Fighters Yet!</h2>

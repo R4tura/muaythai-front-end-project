@@ -13,8 +13,10 @@ const FighterForm = (props) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value });
   };
 
-  const handleSubmit = (evt) => {
-    evt.preventDeafult()
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(formData);
+    
 
     if (props.selected) {
         props.handleUpdateFighter(formData, props.selected._id)
@@ -59,7 +61,7 @@ const FighterForm = (props) => {
 
 
         <button type="submit">
-            {props.selected ? 'Update Pet' : 'Add New Pet'}
+            {props.selected ? 'Update Pet' : 'Add New Fighter'}
             </button>
       </form>
     </div>

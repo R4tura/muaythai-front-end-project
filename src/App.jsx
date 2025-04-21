@@ -3,6 +3,11 @@ import * as fighterService from './services/fighterService';
 import FighterList from "./components/FighterList/FighterList"
 import FighterDetail from './components/FighterDetails/FighterDetails';
 import FighterForm from './components/FighterForm/FighterForm';
+import { Route, Router, Routes } from 'react-router-dom';
+import LandingPage from './components/landing/landingPage';
+import SignInForm from './components/SignInForm/SignInForm';
+import SignUpForm from './components/SignUpForm/SignUpfORM.JSX';
+import NavBar from './components/NavBar/NavBar';
 
 
 function App() {
@@ -29,6 +34,7 @@ function App() {
 
       setFighters([...fighters, newFighter])
       setIsFormOpen(false)
+      setSelected(newFighter)
     } catch (err) {
       console.log(err);
       
@@ -59,13 +65,13 @@ function App() {
 
   const handleDeleteFighter = async (fighterId) => {
     try {
-      const deletedFighter = await fighterService.deletedFighter(fighterId);
+      const deleteFighter = await fighterService.deleteFighter(fighterId);
 
-      if (deletedFighter.err) {
-        throw new Error(deletedFighter.err);
+      if (deleteFighter.err) {
+        throw new Error(deleteFighter.err);
       }
 
-      setFighters(fighters.filter((fighter) => fighter._id !== deletedFighter._id));
+      setFighters(fighters.filter((fighter) => fighter._id !== deleteFighter._id));
       setSelected(null);
       setIsFormOpen(false);
     } catch (err) {
@@ -92,23 +98,15 @@ function App() {
 
   return (
     <>
-      <FighterList 
-      fighters={fighters} 
-      handleSelect={handleSelect} 
-      handleFormView={handleFormView}
-      isFormOpen={isFormOpen} 
-      />
-      {isFormOpen ? (
-      <FighterForm selected={selected} 
-      handleAddFighter={handleAddFighter} 
-      handleUpdateFighter={handleUpdateFighter}
-      />
-      ) : (
-      <FighterDetail selected={selected} 
-      handleFormView={handleFormView} 
-      handleDeleteFighter={handleDeleteFighter}
-       />
-      )}
+    <NavBar />
+      <Routes>
+        <Route path='/' element={<LandingPage/>}/>
+        <Route path='/fighterList' element={<FighterList fighters={fighters} handleSelect={handleSelect} handleFormView= {handleFormView} isFormOpen={isFormOpen} />} />
+        <Route path='/fighterForm' element={<FighterForm selected={selected} handleAddFighter={handleAddFighter}  handleUpdateFighter={handleUpdateFighter}/>}/>
+        <Route path='/fighterDetails' element={<FighterDetail selected={selected} handleFormView={handleFormView} handleDeleteFighter={handleDeleteFighter}/>}/>
+        <Route path='/signUp' element={<SignUpForm/>}/>
+        <Route path='/signIn' element={<SignInForm/>}/>
+      </Routes>
     </>
   )
 }
