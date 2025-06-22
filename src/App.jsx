@@ -6,7 +6,7 @@ import FighterForm from './components/FighterForm/FighterForm';
 import { Route, Router, Routes } from 'react-router-dom';
 import LandingPage from './components/landing/landingPage';
 import SignInForm from './components/SignInForm/SignInForm';
-import SignUpForm from './components/SignUpForm/SignUpfORM.JSX';
+import SignUpForm from './components/SignUpForm/SignUpForm';
 import NavBar from './components/NavBar/NavBar';
 
 
